@@ -1,0 +1,6 @@
+FROM nvcr.io/nvidia/pytorch:21.11-py3
+
+ENV USERNAME container-user
+
+COPY requirements.txt requirements.txt
+RUN pip install -U pip && pip install -r requirements.txt
