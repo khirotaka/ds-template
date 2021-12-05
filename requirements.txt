@@ -18,3 +18,4 @@ pytorch-lightning
 lightning-bolts
 optuna
 hydra-core
+pytorch-metric-learning
