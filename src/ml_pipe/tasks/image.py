@@ -79,6 +79,15 @@ class BasicArcFaceSystem(pl.LightningModule):
 
         self.log("train_loss", loss)
 
+    def validation_step(self, batch, batch_idx):
+        x, y = batch
+        batch_size = x.shape[0]
+
+        embedding = self(x).reshape(batch_size, -1)
+        loss = self.criterion(embedding, y)
+
+        self.log("val_loss", loss)
+
     def configure_optimizers(self):
         model_optim = self.model_optim_config["optim"](
             self.model.parameters(), **self.model_optim_config["args"]
